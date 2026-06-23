@@ -2,8 +2,8 @@ import cv2
 import numpy as np
 
 # Open the image files.
-img1_color = cv2.imread("align.jpg")  # Image to be aligned.
-img2_color = cv2.imread("ref.jpg")    # Reference image.
+img1_color = cv2.imread(r"C:\Users\crisf\OPENCV\ImagenesOPENCV\data\WhatsApp Image 2026-06-23 at 16.29.12 (1).jpeg")  # Image to be aligned.
+img2_color = cv2.imread(r"C:\Users\crisf\OPENCV\ImagenesOPENCV\data\WhatsApp Image 2026-06-23 at 16.29.12.jpeg")    # Reference image.
 
 # Convert to grayscale.
 img1 = cv2.cvtColor(img1_color, cv2.COLOR_BGR2GRAY)
@@ -28,7 +28,7 @@ matcher = cv2.BFMatcher(cv2.NORM_HAMMING, crossCheck = True)
 matches = matcher.match(d1, d2)
 
 # Sort matches on the basis of their Hamming distance.
-matches.sort(key = lambda x: x.distance)
+matches = sorted(matches, key=lambda x: x.distance)
 
 # Take the top 90 % matches forward.
 matches = matches[:int(len(matches)*0.9)]
